@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const userRoute = require('./routes/user.route');
+const favoriteRoute = require('./routes/favoriteMusic.route');
 const app = express();
 
 const HOSTNAME = process.env.HOSTNAME || 'localhost';
@@ -19,6 +20,7 @@ app.use(express.urlencoded({
 }))
 
 app.use('/', userRoute);
+app.use('/', favoriteRoute)
 
 app.use('*', (req, res) => {
     res.status(404)
